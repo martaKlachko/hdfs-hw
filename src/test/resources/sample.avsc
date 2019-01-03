@@ -1,0 +1,17 @@
+{
+ "type": "record",
+ "name": "SampleRecords",
+ "doc": "Sample Records",
+ "fields":
+  [
+  {
+   "name": "id",
+   "type": "int"
+
+  },
+  {
+   "name": "hotel_cluster",
+   "type": "string"
+  }
+ ]
+}

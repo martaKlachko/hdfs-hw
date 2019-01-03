@@ -1,0 +1,608 @@
+{
+ "type": "record",
+ "name": "Destinations",
+ "doc": "Destination Records",
+ "fields":
+  [
+    {
+     "name": "srch_destination_id",
+     "type": "int"
+    },
+    {
+     "name": "d1",
+     "type": "double"
+    },
+    {
+     "name": "d2",
+     "type": "double"
+    },
+    {
+     "name": "d3",
+     "type": "double"
+    },
+    {
+     "name": "d4",
+     "type": "double"
+    },
+    {
+     "name": "d5",
+     "type": "double"
+    },
+    {
+     "name": "d6",
+     "type": "double"
+    },
+    {
+     "name": "d7",
+     "type": "double"
+    },
+    {
+     "name": "d8",
+     "type": "double"
+    },
+    {
+     "name": "d9",
+     "type": "double"
+    },
+    {
+     "name": "d10",
+     "type": "double"
+    },
+    {
+     "name": "d11",
+     "type": "double"
+    },
+    {
+     "name": "d12",
+     "type": "double"
+    },
+    {
+     "name": "d13",
+     "type": "double"
+    },
+    {
+     "name": "d14",
+     "type": "double"
+    },
+    {
+     "name": "d15",
+     "type": "double"
+    },
+    {
+     "name": "d16",
+     "type": "double"
+    },
+    {
+     "name": "d17",
+     "type": "double"
+    },
+    {
+     "name": "d18",
+     "type": "double"
+    },
+    {
+     "name": "d19",
+     "type": "double"
+    },
+    {
+     "name": "d20",
+     "type": "double"
+    },
+    {
+     "name": "d21",
+     "type": "double"
+    },
+    {
+     "name": "d22",
+     "type": "double"
+    },
+    {
+     "name": "d23",
+     "type": "double"
+    },
+    {
+     "name": "d24",
+     "type": "double"
+    },
+    {
+     "name": "d25",
+     "type": "double"
+    },
+    {
+     "name": "d26",
+     "type": "double"
+    },
+    {
+     "name": "d27",
+     "type": "double"
+    },
+    {
+     "name": "d28",
+     "type": "double"
+    },
+    {
+     "name": "d29",
+     "type": "double"
+    },
+    {
+     "name": "d30",
+     "type": "double"
+    },
+    {
+     "name": "d31",
+     "type": "double"
+    },
+    {
+     "name": "d32",
+     "type": "double"
+    },
+    {
+     "name": "d33",
+     "type": "double"
+    },
+    {
+     "name": "d34",
+     "type": "double"
+    },
+    {
+     "name": "d35",
+     "type": "double"
+    },
+    {
+     "name": "d36",
+     "type": "double"
+    },
+    {
+     "name": "d37",
+     "type": "double"
+    },
+    {
+     "name": "d38",
+     "type": "double"
+    },
+    {
+     "name": "d39",
+     "type": "double"
+    },
+    {
+     "name": "d40",
+     "type": "double"
+    },
+    {
+     "name": "d41",
+     "type": "double"
+    },
+    {
+     "name": "d42",
+     "type": "double"
+    },
+    {
+     "name": "d43",
+     "type": "double"
+    },
+    {
+     "name": "d44",
+     "type": "double"
+    },
+    {
+     "name": "d45",
+     "type": "double"
+    },
+    {
+     "name": "d46",
+     "type": "double"
+    },
+    {
+     "name": "d47",
+     "type": "double"
+    },
+    {
+     "name": "d48",
+     "type": "double"
+    },
+    {
+     "name": "d49",
+     "type": "double"
+    },
+    {
+     "name": "d50",
+     "type": "double"
+    },
+    {
+     "name": "d51",
+     "type": "double"
+    },
+    {
+     "name": "d52",
+     "type": "double"
+    },
+    {
+     "name": "d53",
+     "type": "double"
+    },
+    {
+     "name": "d54",
+     "type": "double"
+    },
+    {
+     "name": "d55",
+     "type": "double"
+    },
+    {
+     "name": "d56",
+     "type": "double"
+    },
+    {
+     "name": "d57",
+     "type": "double"
+    },
+    {
+     "name": "d58",
+     "type": "double"
+    },
+    {
+     "name": "d59",
+     "type": "double"
+    },
+    {
+     "name": "d60",
+     "type": "double"
+    },
+    {
+     "name": "d61",
+     "type": "double"
+    },
+    {
+     "name": "d62",
+     "type": "double"
+    },
+    {
+     "name": "d63",
+     "type": "double"
+    },
+    {
+     "name": "d64",
+     "type": "double"
+    },
+    {
+     "name": "d65",
+     "type": "double"
+    },
+    {
+     "name": "d66",
+     "type": "double"
+    },
+    {
+     "name": "d67",
+     "type": "double"
+    },
+    {
+     "name": "d68",
+     "type": "double"
+    },
+    {
+     "name": "d69",
+     "type": "double"
+    },
+    {
+     "name": "d70",
+     "type": "double"
+    },
+    {
+     "name": "d71",
+     "type": "double"
+    },
+    {
+     "name": "d72",
+     "type": "double"
+    },
+    {
+     "name": "d73",
+     "type": "double"
+    },
+    {
+     "name": "d74",
+     "type": "double"
+    },
+    {
+     "name": "d75",
+     "type": "double"
+    },
+    {
+     "name": "d76",
+     "type": "double"
+    },
+    {
+     "name": "d77",
+     "type": "double"
+    },
+    {
+     "name": "d78",
+     "type": "double"
+    },
+    {
+     "name": "d79",
+     "type": "double"
+    },
+    {
+     "name": "d80",
+     "type": "double"
+    },
+    {
+     "name": "d81",
+     "type": "double"
+    },
+    {
+     "name": "d82",
+     "type": "double"
+    },
+    {
+     "name": "d83",
+     "type": "double"
+    },
+    {
+     "name": "d84",
+     "type": "double"
+    },
+    {
+     "name": "d85",
+     "type": "double"
+    },
+    {
+     "name": "d86",
+     "type": "double"
+    },
+    {
+     "name": "d87",
+     "type": "double"
+    },
+    {
+     "name": "d88",
+     "type": "double"
+    },
+    {
+     "name": "d89",
+     "type": "double"
+    },
+    {
+     "name": "d90",
+     "type": "double"
+    },
+    {
+     "name": "d91",
+     "type": "double"
+    },
+    {
+     "name": "d92",
+     "type": "double"
+    },
+    {
+     "name": "d93",
+     "type": "double"
+    },
+    {
+     "name": "d94",
+     "type": "double"
+    },
+    {
+     "name": "d95",
+     "type": "double"
+    },
+    {
+     "name": "d96",
+     "type": "double"
+    },
+    {
+     "name": "d97",
+     "type": "double"
+    },
+    {
+     "name": "d98",
+     "type": "double"
+    },
+    {
+     "name": "d99",
+     "type": "double"
+    },
+    {
+     "name": "d100",
+     "type": "double"
+    },
+    {
+     "name": "d101",
+     "type": "double"
+    },
+    {
+     "name": "d102",
+     "type": "double"
+    },
+    {
+     "name": "d103",
+     "type": "double"
+    },
+    {
+     "name": "d104",
+     "type": "double"
+    },
+    {
+     "name": "d105",
+     "type": "double"
+    },
+    {
+     "name": "d106",
+     "type": "double"
+    },
+    {
+     "name": "d107",
+     "type": "double"
+    },
+    {
+     "name": "d108",
+     "type": "double"
+    },
+    {
+     "name": "d109",
+     "type": "double"
+    },
+    {
+     "name": "d110",
+     "type": "double"
+    },
+    {
+     "name": "d111",
+     "type": "double"
+    },
+    {
+     "name": "d112",
+     "type": "double"
+    },
+    {
+     "name": "d113",
+     "type": "double"
+    },
+    {
+     "name": "d114",
+     "type": "double"
+    },
+    {
+     "name": "d115",
+     "type": "double"
+    },
+    {
+     "name": "d116",
+     "type": "double"
+    },
+    {
+     "name": "d117",
+     "type": "double"
+    },
+    {
+     "name": "d118",
+     "type": "double"
+    },
+    {
+     "name": "d119",
+     "type": "double"
+    },
+    {
+     "name": "d120",
+     "type": "double"
+    },
+    {
+     "name": "d121",
+     "type": "double"
+    },
+    {
+     "name": "d122",
+     "type": "double"
+    },
+    {
+     "name": "d123",
+     "type": "double"
+    },
+    {
+     "name": "d124",
+     "type": "double"
+    },
+    {
+     "name": "d125",
+     "type": "double"
+    },
+    {
+     "name": "d126",
+     "type": "double"
+    },
+    {
+     "name": "d127",
+     "type": "double"
+    },
+    {
+     "name": "d128",
+     "type": "double"
+    },
+    {
+     "name": "d129",
+     "type": "double"
+    },
+    {
+     "name": "d130",
+     "type": "double"
+    },
+    {
+     "name": "d131",
+     "type": "double"
+    },
+    {
+     "name": "d132",
+     "type": "double"
+    },
+    {
+     "name": "d133",
+     "type": "double"
+    },
+    {
+     "name": "d134",
+     "type": "double"
+    },
+    {
+     "name": "d135",
+     "type": "double"
+    },
+    {
+     "name": "d136",
+     "type": "double"
+    },
+    {
+     "name": "d137",
+     "type": "double"
+    },
+    {
+     "name": "d138",
+     "type": "double"
+    },
+    {
+     "name": "d139",
+     "type": "double"
+    },
+    {
+     "name": "d140",
+     "type": "double"
+    },
+    {
+     "name": "d141",
+     "type": "double"
+    },
+    {
+     "name": "d142",
+     "type": "double"
+    },
+    {
+     "name": "d143",
+     "type": "double"
+    },
+    {
+     "name": "d144",
+     "type": "double"
+    },
+    {
+     "name": "d145",
+     "type": "double"
+    },
+    {
+     "name": "d146",
+     "type": "double"
+    },
+    {
+     "name": "d147",
+     "type": "double"
+    },
+    {
+     "name": "d148",
+     "type": "double"
+    },
+    {
+     "name": "d149",
+     "type": "double"
+    }
+ ]
+}
