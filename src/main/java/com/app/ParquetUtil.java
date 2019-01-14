@@ -1,11 +1,5 @@
 package com.app;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.apache.avro.Schema;
@@ -19,49 +13,57 @@ import org.apache.parquet.hadoop.ParquetReader;
 import org.apache.parquet.hadoop.ParquetWriter;
 import org.apache.parquet.hadoop.metadata.CompressionCodecName;
 
-public class ParquetUtils {
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-    public static Schema parseSchema(String schemaPath) {
+public class ParquetUtil {
+
+    public static Schema parseSchema(String path) {
         Schema.Parser parser = new Schema.Parser();
         Schema schema = null;
 
         try {
-            schema = parser.parse(new File(schemaPath));
+            schema = parser.parse(new File(path));
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return schema;
     }
 
-    public static void writeToParquet(Schema schema, String csvPath, String parquetPath) {
+    public static void writeToFile(Schema schema, String pathToCsv, String parquetPath) {
 
         Path path = new Path(parquetPath);
         ParquetWriter<GenericData.Record> writer = null;
         GenericData.Record record;
 
         try (
-                Reader reader = Files.newBufferedReader(Paths.get(csvPath));
+                Reader reader = Files.newBufferedReader(Paths.get(pathToCsv));
                 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
         ) {
-            String[] nextRecord;
+
 
             writer = AvroParquetWriter.
                     <GenericData.Record>builder(path)
-                    .withRowGroupSize(ParquetWriter.DEFAULT_BLOCK_SIZE)
-                    .withPageSize(ParquetWriter.DEFAULT_PAGE_SIZE)
-                    .withSchema(schema)
                     .withConf(new Configuration())
-                    .withCompressionCodec(CompressionCodecName.SNAPPY)
+                    .withPageSize(ParquetWriter.DEFAULT_PAGE_SIZE)
+                    .withRowGroupSize(ParquetWriter.DEFAULT_BLOCK_SIZE)
+                    .withSchema(schema)
                     .withValidation(false)
                     .withDictionaryEncoding(false)
+                    .withCompressionCodec(CompressionCodecName.SNAPPY)
                     .build();
+
+            String[] nextRecord;
 
             while ((nextRecord = csvReader.readNext()) != null) {
                 record = new GenericData.Record(schema);
 
-                for (int i=0; i<nextRecord.length; i++) {
+                for (int i = 0; i < nextRecord.length; i++) {
 
                     Schema.Type type = schema.getFields().get(i).schema().getType();
 
@@ -83,7 +85,7 @@ public class ParquetUtils {
                     }
 
                     if (type == Schema.Type.STRING) {
-                        record.put(i,nextRecord[i]);
+                        record.put(i, nextRecord[i]);
                     }
                 }
                 writer.write(record);
@@ -91,7 +93,7 @@ public class ParquetUtils {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(writer != null) {
+            if (writer != null) {
                 try {
                     writer.close();
                 } catch (IOException e) {
@@ -101,32 +103,23 @@ public class ParquetUtils {
         }
     }
 
-    public static void readParquetFile(String parquetFilePath, int maxRows) {
-        ParquetReader<GenericData.Record> reader = null;
+    public static void readFile(String parquetPath, int maxRows) {
 
-        Path path = new Path(parquetFilePath);
-        try {
-            reader = AvroParquetReader
-                    .<GenericData.Record>builder(path)
-                    .withConf(new Configuration())
-                    .build();
+        Path path = new Path(parquetPath);
+        try (ParquetReader<GenericData.Record> reader = AvroParquetReader
+                .<GenericData.Record>builder(path)
+                .withConf(new Configuration())
+                .build()) {
+
             GenericData.Record record;
 
-            int i = maxRows;
-            while ( ((record = reader.read()) != null) && i>0 ) {
+            int k = maxRows;
+            while (((record = reader.read()) != null) && k > 0) {
                 System.out.println(record);
-                i--;
+                k--;
             }
-        }catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if(reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 
