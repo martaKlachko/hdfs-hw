@@ -36,5 +36,6 @@ hs_err_pid*
 .idea/
 
 SparkTutorial.iml
+*.iml
 
 .idea/vcs.xml
