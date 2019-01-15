@@ -40,66 +40,70 @@ public class ParquetUtil {
         Path path = new Path(parquetPath);
         ParquetWriter<GenericData.Record> writer = null;
         GenericData.Record record;
+        if (schema != null) {
 
-        try (
-                Reader reader = Files.newBufferedReader(Paths.get(pathToCsv));
-                CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
-        ) {
+            try (
+                    Reader reader = Files.newBufferedReader(Paths.get(pathToCsv));
+                    CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
+            ) {
 
 
-            writer = AvroParquetWriter.
-                    <GenericData.Record>builder(path)
-                    .withConf(new Configuration())
-                    .withPageSize(ParquetWriter.DEFAULT_PAGE_SIZE)
-                    .withRowGroupSize(ParquetWriter.DEFAULT_BLOCK_SIZE)
-                    .withSchema(schema)
-                    .withValidation(false)
-                    .withDictionaryEncoding(false)
-                    .withCompressionCodec(CompressionCodecName.SNAPPY)
-                    .build();
+                writer = AvroParquetWriter.
+                        <GenericData.Record>builder(path)
+                        .withConf(new Configuration())
+                        .withPageSize(ParquetWriter.DEFAULT_PAGE_SIZE)
+                        .withRowGroupSize(ParquetWriter.DEFAULT_BLOCK_SIZE)
+                        .withSchema(schema)
+                        .withValidation(false)
+                        .withDictionaryEncoding(false)
+                        .withCompressionCodec(CompressionCodecName.SNAPPY)
+                        .build();
 
-            String[] nextRecord;
+                String[] nextRecord;
 
-            while ((nextRecord = csvReader.readNext()) != null) {
-                record = new GenericData.Record(schema);
+                while ((nextRecord = csvReader.readNext()) != null) {
+                    record = new GenericData.Record(schema);
 
-                for (int i = 0; i < nextRecord.length; i++) {
+                    for (int i = 0; i < nextRecord.length; i++) {
 
-                    Schema.Type type = schema.getFields().get(i).schema().getType();
+                        Schema.Type type = schema.getFields().get(i).schema().getType();
 
-                    boolean isNumber = NumberUtils.isNumber(nextRecord[i]);
+                        boolean isNumber = NumberUtils.isNumber(nextRecord[i]);
 
-                    if (type == Schema.Type.INT) {
-                        int putRecord = isNumber ? Integer.parseInt(nextRecord[i]) : 0;
-                        record.put(i, putRecord);
+                        if (type == Schema.Type.INT) {
+                            int putRecord = isNumber ? Integer.parseInt(nextRecord[i]) : 0;
+                            record.put(i, putRecord);
+                        }
+
+                        if (type == Schema.Type.DOUBLE) {
+                            double putRecord = isNumber ? Double.parseDouble(nextRecord[i]) : 0.0d;
+                            record.put(i, putRecord);
+                        }
+
+                        if (type == Schema.Type.LONG) {
+                            long putRecord = isNumber ? Long.parseLong(nextRecord[i]) : 0L;
+                            record.put(i, putRecord);
+                        }
+
+                        if (type == Schema.Type.STRING) {
+                            record.put(i, nextRecord[i]);
+                        }
                     }
-
-                    if (type == Schema.Type.DOUBLE) {
-                        double putRecord = isNumber ? Double.parseDouble(nextRecord[i]) : 0.0d;
-                        record.put(i, putRecord);
-                    }
-
-                    if (type == Schema.Type.LONG) {
-                        long putRecord = isNumber ? Long.parseLong(nextRecord[i]) : 0L;
-                        record.put(i, putRecord);
-                    }
-
-                    if (type == Schema.Type.STRING) {
-                        record.put(i, nextRecord[i]);
+                    writer.write(record);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (writer != null) {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-                writer.write(record);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        } else {
+            System.out.println("Schema is null!!");
         }
     }
 
