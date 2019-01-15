@@ -10,7 +10,7 @@ public class Main {
 //        ParquetUtil.writeToFile(schema,args[1],args[2]);
 //
 //        ParquetUtil.readFile(args[2],Integer.parseInt(args[3]));
-        ParquetUtil.readFile("src/test/resources/sampleForReading.parquet", 20);
+        ParquetUtil.readFile("src/test/resources/fileForRead.parquet", 20);
     }
 
 }

@@ -106,16 +106,17 @@ public class ParquetUtil {
     public static void readFile(String parquetPath, int maxRows) {
 
         Path path = new Path(parquetPath);
+        Configuration configuration = new Configuration();
         try (ParquetReader<GenericData.Record> reader = AvroParquetReader
                 .<GenericData.Record>builder(path)
-                .withConf(new Configuration())
+                .withConf(configuration)
                 .build()) {
 
-            GenericData.Record record;
+            GenericData.Record line;
 
             int k = maxRows;
-            while (((record = reader.read()) != null) && k > 0) {
-                System.out.println(record);
+            while (((line = reader.read()) != null) && k > 0) {
+                System.out.println(line);
                 k--;
             }
         } catch (IOException e) {
