@@ -20,7 +20,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ParquetUtil {
-
+    /**
+     * Reads  avro schema from a file
+     * @param path path to schema file(avsc format)
+     * @return Schema
+     */
     public static Schema parseSchema(String path) {
         Schema.Parser parser = new Schema.Parser();
         Schema schema = null;
@@ -34,7 +38,12 @@ public class ParquetUtil {
 
         return schema;
     }
-
+    /**
+     * Converts csv file to parquet format and write it to file
+     * @param schema avro schema
+     * @param pathToCsv path to csv file that must be converted
+     * @param parquetPath path to parquet file that will be created
+     */
     public static void writeToFile(Schema schema, String pathToCsv, String parquetPath) {
 
         Path path = new Path(parquetPath);
@@ -107,6 +116,11 @@ public class ParquetUtil {
         }
     }
 
+    /**
+     *Reading parquet file and printing its content to console
+     * @param parquetPath path to parquet file, that must be read
+     * @param maxRows  number of rows of parquet file that will be shown
+     */
     public static void readFile(String parquetPath, int maxRows) {
 
         Path path = new Path(parquetPath);
